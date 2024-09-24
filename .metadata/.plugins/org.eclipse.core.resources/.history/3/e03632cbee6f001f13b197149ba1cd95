@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쿠키와 세션의 사용</title>
+</head>
+<body>
+	<h2>쿠키와 세션의 사용</h2>
+	
+	<ul>
+		<li>쿠키의 사용
+			<ul>
+				<li><a href="cookieSave">쿠키 저장</a>
+				<li><a href="cookieDelete">쿠키 삭제</a>
+				<li><a href="cookieRead">쿠키 읽기</a>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li><a href="sessionSave">세션 저장</a>
+				<li><a href="sessionDelete">세션 삭제</a>
+				<li><a href="sessionRead">세션 읽기</a>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

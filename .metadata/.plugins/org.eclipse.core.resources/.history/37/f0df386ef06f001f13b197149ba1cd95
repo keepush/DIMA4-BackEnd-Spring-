@@ -1,0 +1,20 @@
+package com.kdigital.cookietest.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.Cookie;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+public class CookieController {
+	
+	@GetMapping("/cookieSave")
+	public String cookieSave() {
+		// 쿠키 생성
+		Cookie cookie = new Cookie("test1", "1111");
+		
+		return "cookieResult";
+	}
+}

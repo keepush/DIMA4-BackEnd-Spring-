@@ -1,0 +1,5 @@
+package com.kdigital.diary.controller;
+
+public class DiaryController {
+
+}

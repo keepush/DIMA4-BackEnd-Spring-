@@ -1,0 +1,45 @@
+function update() {
+    console.log('update 함수 실행');
+    let userPwd = $("#userPwd").val();
+    
+    if(userPwd.trim().length < 3 || userPwd.trim().length > 5) {
+        console.log('비밀번호 길이 오류');
+        $('#confirmPwd').css('color', 'red');
+        $('#confirmPwd').html('비밀번호는 3~5자 사이로 입력하시오!');
+        pwdCheck = false;
+        return;
+    }
+    
+    let userPwdCheck = $("#userPwdCheck").val();
+    
+    if(userPwd.trim() != userPwdCheck.trim()) {
+        console.log('비밀번호 확인 오류');
+        $('#confirmPwd').css('color', 'red');
+        $('#confirmPwd').html('비밀번호와 비밀번호 확인은 값이 같아야 합니다.');
+        pwdCheck = false;
+        return;
+    }
+    
+    $('#confirmPwd').html('');
+    pwdCheck = true;
+
+    // 이메일 체크
+    let email = $('#email').val();
+    if(email.trim().length == 0) {
+        console.log('이메일 입력 오류');
+        $('#emailCheck').css('color', 'red');
+        $('#emailCheck').html('이메일을 입력하세요');
+        $('#email').select();
+        return;
+    } 
+    
+    $('#emailCheck').html('');    
+    
+    // 수정 진행 전에 확인
+    if(!pwdCheck) {
+        alert('모든 정보를 정확히 입력해 주세요');
+        return ;
+    }
+    
+    $('#updateForm').submit();
+}

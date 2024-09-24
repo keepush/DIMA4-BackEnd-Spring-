@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thymeleaf text 출력</title>
+</head>
+
+<body>
+    <h2>Thymeleaf text 출력</h2>
+    <div>
+        <a th:href="@{/}">홈으로</a>
+    </div>
+
+    <h3>1. 문자 출력</h3>
+    <p>한글 출력: <span th:text="${korean}">한글</span></p>
+    <p>영문 출력: <span th:text="${english}">영문</span></p>
+    <p>태그 출력: <span th:text="${tag}">태그</span></p>
+    <p>정수 출력: <span th:text="${age}">정수</span></p>
+    <p>실수 출력: <span th:text="${pi}">실수</span></p>
+    <p>URL 출력: <span th:text="${url}">실수</span></p>
+    <br>
+    
+    <p>태그 출력: <span th:utext="${tag}">태그</span></p>
+    <p>URL 출력: <a th:href="${url}" th:text="${url}">네이버</a></p>
+    
+    <!-- 특정 파일이나 요청을 보낼 때는 @, 변수를 꺼낼 때는 $ -->
+    
+    <hr>
+    <h3>2. 태그의 Inner 위치에서 Thymeleaf 문법을 사용하면...</h3>
+    <p>한글 출력: [[${korean}]] </p>
+    <p>영문 출력: [[${english}]] </p>
+    
+    <hr>
+    <h3>3. 빈 데이터 출력(아무것도 출력되지 않음)</h3>
+    <p>null 출력: <span th:text="${nullData}">null</span></p>
+    <p>빈 문자 출력: <span th:text="${emptyData}">빈 문자</span></p>
+</body>
+
+</html>

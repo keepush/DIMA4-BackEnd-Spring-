@@ -1,0 +1,28 @@
+package com.kdigital.diary.dto;
+
+import java.time.LocalDate;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Diary {
+	private Integer fseq;
+	private String username;
+	private String feeling;
+	private String title;
+	private String records;
+	private LocalDate regdate;
+	
+	public static Diary toDTO(DiaryEntity diaryEntity) {
+		return Diary.Builder()
+				.
+	}
+}

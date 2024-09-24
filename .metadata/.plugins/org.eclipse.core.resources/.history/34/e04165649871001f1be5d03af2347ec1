@@ -1,0 +1,55 @@
+package com.kdigital.score.service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.kdigital.score.dto.ScoreDTO;
+import com.kdigital.score.entity.ScoreEntity;
+import com.kdigital.score.repository.ScoreRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+public class ScoreService {
+	
+	final ScoreRepository repository;
+	
+	public void insert(ScoreDTO score) {
+	log.info("{}", score.toString());
+	
+	// DTO를 Entity로 변환
+	ScoreEntity scoreEntity = ScoreEntity.toEntity(score);
+	repository.save(scoreEntity);
+		
+	}
+
+	public List<ScoreDTO> list() {
+		List<ScoreDTO> list = new ArrayList<>();
+		
+		List<ScoreEntity> entitylist = repository.findAll();
+		
+		// 리스트가 null이거나 비어 있으면 빈 리스트를 반환
+	    if (list == null || list.isEmpty()) {
+	        return Collections.emptyList(); // 빈 리스트 반환
+	    }
+		
+		entitylist.forEach((entity) -> list.add(ScoreDTO.toDTO(entity)));
+		
+		log.info("{}", list.get(0).toString());
+		
+		return list;
+	}
+
+	public void delete(String stid) {
+		log.info("삭제할 학번: {}", stid);
+		
+		repository.deleteById(stid);
+	}
+
+}

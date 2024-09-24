@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+a { text-decoration: none;}
+a:ling { color: black; }
+a:hover { font-weight: bold; }
+a:active { color: red; }
+a:visited { color: green; }
+
+p {
+	font-weight: bold;
+	color: blue;
+}

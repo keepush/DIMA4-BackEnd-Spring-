@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=spring7/C:\/Users\/user\/.gradle\/caches\/modules-2\/files-2.1\/org.springframework.security\/spring-security-web\/6.3.3\/54455b90899cd803e92b020124e859a859f63ee0\/spring-security-web-6.3.3.jar=/gradle_used_by_scope=/main,test=/&lt;org.springframework.security.web.authentication(AuthenticationSuccessHandler.class[AuthenticationSuccessHandler" modifiers="1537" timestamp="1725601548423"/>
+    <typeInfo handle="=ajaxtest/C:\/Users\/user\/.gradle\/caches\/modules-2\/files-2.1\/org.springframework.data\/spring-data-jpa\/3.3.3\/9b89dbd19eee24c4dc4df12564efc603c614aa91\/spring-data-jpa-3.3.3.jar=/gradle_used_by_scope=/main,test=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1724647713288"/>
+</typeInfoHistroy>

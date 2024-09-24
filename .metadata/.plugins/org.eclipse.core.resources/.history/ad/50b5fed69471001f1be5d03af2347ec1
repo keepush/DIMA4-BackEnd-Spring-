@@ -1,0 +1,47 @@
+package com.kdigital.score.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.kdigital.score.dto.ScoreDTO;
+import com.kdigital.score.service.ScoreService;
+import com.kdigital.spring6.dto.Friend;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@RequiredArgsConstructor // 생성자 주입 방식, setter 주입 방식, Annotation 주입 방식
+@Slf4j
+public class ScoreController {
+	
+	final ScoreService service;
+	
+	@GetMapping("/insert")
+	public String insert() {
+		return "InsertForm";
+	}
+	
+	@PostMapping("/insertForm")
+	public String insertForm(ScoreDTO score) {
+		service.insert(score);
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/list")
+	public String list(Model model) {
+			
+		List<ScoreDTO> list = service.list();
+		model.addAttribute("list", list);
+		
+		return "list";
+	}
+	
+	
+	
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>전체 목록</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>[ 전체 학생 조회 ]</h2>
+    <div th:unless="${#lists.isEmpty(list)}" id="info">
+    <table border="1">
+    	<tr>
+    		<th>번호</th>
+    		<th>학번</th>
+    		<th>이름</th>
+    		<th>국어</th>
+    		<th>영어</th>
+    		<th>수학</th>
+    		<th>총점</th>
+    		<th></th>
+    		<th></th>
+    	</tr>
+    	<tr th:each="score, stat : ${list}">
+    		<td th:text="${stat.count}"></td>
+    		<td th:text="${score.stid}"></td>
+    		<td th:text="${score.stname}"></td>
+    		<td th:text="${score.korean}"></td>
+    		<td th:text="${score.english}"></td>
+    		<td th:text="${score.math}"></td>
+    		<td th:text="${score.korean + score.english + score.math}"></td>
+    		<td><a th:href="@{/delete(stid=${score.stid})}">삭제</a></td>
+    		<td><a th:href="@{/udpate}">수정</a></td>
+    	</tr>
+    </table>
+    </div>
+
+</body>
+</html>

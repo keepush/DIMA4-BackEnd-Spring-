@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 출력</title>
+</head>
+
+<body>
+    <h2>1. 객체 출력</h2>
+    <p th:text="${friend}">객체</p>
+
+    <h3>2. 각각의 데이터로 출력</h3>
+    <p th:text="${friend.username}">이름</p>
+    <p th:text="${friend.age} + 10">나이</p>
+    <p th:text="${friend.phone}">전화번호</p>
+    <p th:text="${friend.birthday}">생년월일</p>
+    <p th:text="${friend.active} ? '외향적' : '내향적'">성향</p>
+    
+    <hr>
+    <h2>3. Object 단위 데이터로 출력</h2>
+    <div th:object="${friend}">
+	    <p th:text="*{username}">이름</p>
+	    <p th:text="*{age} + 10">나이</p>
+	    <p th:text="*{phone}">전화번호</p>
+	    <p th:text="*{birthday}">생년월일</p>
+	    <p th:text="*{active} ? '외향적' : '내향적'">성향</p>
+    </div>
+    for(String data : list)
+    
+    <hr>
+    <h2>4. List에 들어있는 데이터 출력</h2>
+    <p>개수: [[${list.size()}]]</p>
+    <div th:each="item : ${list}">
+    	<span th:text="${item}"></span>&nbsp;
+    </div>
+    
+    <hr>
+    <h2>5. Map에 들어있는 데이터 출력</h2>
+    <p>개수: [[${map.size()}]]</p>
+    <p>10번 데이터: [[${map[10]}]]</p>
+    
+    <h3>Map 정보 전체 순회</h3>
+    <ul th:each="f : ${map}">
+    	<li>번호: [[${f.key}]]</li>
+    	<li>이름: [[${f.value.username}]]</li>
+    	<li>나이: [[${f.value.age}]]</li>
+    	<li>전화번호: [[${f.value.phone}]]</li>
+    	<li>성향: [[${f.value.active} ? '외향적' : '내성적']]</li>
+    </ul>
+    
+    <hr>
+    <h3>6. 숫자 정보 전체 순회</h3>
+    <div th:each="n, status : ${nList}">
+    	<span th:if="${status.count % 3 == 0}" style="color:red;">[[${status.count}]] : *****</span>
+    	<span th:unless="${status.count % 3 == 0}">----------</span>
+    </div>
+</body>
+
+</html>

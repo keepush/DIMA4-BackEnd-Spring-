@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Web Diary</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<style>
+	.wrapper {
+	  padding-right: 15px;
+	  padding-left: 15px;
+
+	}
+    .jumbotron{
+        background-image: url('/images/index_main.jpg');
+        background-size: cover;
+        text-shadow: black 0.2em 0.2em 0.2em;
+        color:white;
+    }
+</style>
+
+</head>
+<body>
+<div class="container">
+      <div class="jumbotron">
+        <h1 class="text-center display-4">My Web Diary</h1>
+        <p class="text-center h4">웹에 기록하는 일상</p>
+        <p class="text-center">
+			<span class="h5">[[ ${username} ]]님, 안녕하세요</span>
+			<a class="btn btn-primary btn-sm" role="button" href="diary">오늘의 기록</a>
+       	</p>
+       	</div>
+</div>       	
+</body>
+</html>

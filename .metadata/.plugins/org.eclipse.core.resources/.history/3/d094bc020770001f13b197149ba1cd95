@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>로그인 화면</title>
+</head>
+<body>
+	<h2>로그인 화면</h2>
+	
+	<form th:action="@/login" method="post"></form>
+</body>
+</html>

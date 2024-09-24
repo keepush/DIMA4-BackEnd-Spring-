@@ -1,0 +1,71 @@
+package com.kdigital.spring7.service;
+
+import java.util.Optional;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.kdigital.spring7.dto.UserDTO;
+import com.kdigital.spring7.entity.UserEntity;
+import com.kdigital.spring7.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+	final UserRepository userRepository;
+	final BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	/**
+	 * 전달 받은 userDTO를 userEntity로 변경한 후 DB save();
+	 * @param userDTO
+	 */
+	public boolean join(UserDTO userDTO) {
+		// 가입하려는 id가 이미 사용중인지 확인 : 사용중인 아이디이면 true
+		boolean isExistUser = userRepository.existsById(userDTO.getUserId());
+		if(isExistUser) return false;		// 이미 사용중인 아이디이므로 가입 실패
+		
+		// 비밀번호 암호화
+		userDTO.setUserPwd(bCryptPasswordEncoder.encode(userDTO.getUserPwd()));
+		
+		UserEntity userEntity = UserEntity.toEntity(userDTO);
+		userRepository.save(userEntity);  	// 가입 성공
+		
+		return true;
+	}
+
+	public boolean existId(String userId) {
+		boolean result = userRepository.existsById(userId);	// userId가 존재하면 true
+		return result;
+	}
+
+	
+	/**
+	 * 개인정보 수정을 위해 아이디와 비밀번호 확인 처리 요청
+	 * @param userId
+	 * @param userPwd
+	 */
+	public UserDTO pwdCheck(String userId, String userPwd) {
+		// 비밀번호 암호화
+		String encodedPwd = bCryptPasswordEncoder.encode(userPwd);
+		
+		Optional <UserEntity> userEntity = userRepository.findById(userId);		// findById는 Optional로 반환하므로 Optional로 받음
+		
+		if(userEntity.isPresent()) {
+			UserEntity temp = userEntity.get();
+			String pwd = temp.getUserPwd();			// DB에 저장된 비밀번호
+			
+			// 전달인자 1 - 암호화 되지 않은 비밀번호, 2 - DB에 저장된 비밀번호 
+			boolean result = bCryptPasswordEncoder.matches(userPwd, pwd);
+			
+			if(result) {
+				return UserDTO.toDTO(temp);		// 수정하고자 하는 정보가 넘어가는 것
+			}
+		}
+		
+		return null;
+	}
+
+}

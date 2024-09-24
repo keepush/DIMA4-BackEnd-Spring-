@@ -1,0 +1,13 @@
+/**
+ * 회원 정보 수정을 위해 비밀번호를 다시 입력받아 확인하는 코드
+ */
+
+$(function(){
+	$('#submitBtn').on('click', validation);
+});
+
+
+// 비밀번호가 입력되었는지 확인 + 서버로 전송
+function validation(){
+	alert("버튼 클릭!")
+}

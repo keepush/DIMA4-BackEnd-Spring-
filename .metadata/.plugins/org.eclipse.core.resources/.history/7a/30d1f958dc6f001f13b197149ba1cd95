@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <script defer th:src="@{/script/search.js}"></script>
+</head>
+
+<body>
+    <div class="container" th:fragment="top-menu">
+        <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a>
+            <h2>게시글 목록</h2>
+        </div>
+    </div> <!-- end .container -->
+</body>
+</html>

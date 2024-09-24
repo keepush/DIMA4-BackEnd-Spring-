@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>오늘의 기록</title>
+<link rel="stylesheet" href="css/main.css">
+
+<script src="script/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+	<h1>[ 오늘의 기록 ]</h1>
+	<div class="top">
+		<a th:href="@{/}"><img th:src="@{/images/home.png}" alt="첫화면"></a>
+		<p><span>(*)</span>부분은 필수 입력사항입니다.</p>
+	</div>
+	<form id="diarywrite" method="POST" th:action="@{/diarywrite}">
+	<input type="hidden" name="username" th:value="${username}">
+	
+	<!-- 입력을 위한 테이블 -->
+	<table border="1">
+		<tr>
+			<th>아이디(이름)</th>
+			<td>aaa( [[${username}]] )</td>
+		</tr>
+		<tr>
+			<th>오늘의 날짜</th>
+			<td>[[${today}]]</td>
+		</tr>
+		<tr>
+			<th>오늘의 기분</th>
+			<td>
+				<div class="moods">
+					<input type="radio" id="feeling" name="mood" value="normal.png" checked>
+    				<label for="normal"><img src="/images/smile.png" alt="기분">(보통)</label>
+    
+    				<input type="radio" id="feeling" name="mood" value="boring.png">
+    				<label for="boring"><img src="/images/bored.png" alt="기분">(지루)</label>
+    
+    				<input type="radio" id="feeling" name="mood" value="happy.png">
+    				<label for="happy"><img src="/images/happy.png" alt="기분">(행복)</label>
+    
+    				<input type="radio" id="feeling" name="mood" value="sad.png">
+    				<label for="sad"><img src="/images/sad.png" alt="기분">(슬픔)</label>
+    
+    				<input type="radio" id="feeling" name="mood" value="sick.png">
+    				<label for="sick"><img src="/images/sick.png" alt="기분">(아픔)</label>
+    
+    				<input type="radio" id="feeling" name="mood" value="angry.png">
+    				<label for="angry"><img src="/images/angry.png" alt="기분">(화남)</label>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>제목<span>(*)</span></th>
+			<td><input type="text" id="title" name="title" placeholder="일기 제목 입력"></td>
+		</tr>
+		<tr>
+			<th>오늘의 일기<span>(*)</span></th>
+			<td><textarea id="records" name="records"></textarea></td>
+		</tr>
+		<tr>
+			<th>
+				<input type="submit" value="일기 쓰기">
+				<input type="reset" value="다시 입력">
+			</th>
+		</tr>
+	</table>
+	</form><br>
+	
+	<!-- diary 출력 위치 -->
+	<div th:unless="${#lists.isEmpty(list)}" id="contents">
+    <table border="1">
+        <tr>
+            <th>날짜</th>
+            <th>그날의 기분</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>비고</th>
+        </tr>
+        <tr th:each="diary : ${list}">
+            <td th:text="${diary.regdate}"></td>
+            <td><img th:src="@{/images/${diary.feeling}}" alt="기분"></td>
+            <td th:text="${diary.title}"></td>
+            <td th:text="${diary.records}"></td>
+            <td><input type="button" class="deleteOne" th:data-seq="${diary.diary_seq}" value="삭제"></td>
+        </tr>
+    </table>
+	</div>
+	
+</div>
+
+	<form id="sendOne" th:action="@{/deleteOne}" method="GET">
+  	  <input type="hidden" id="fseq" name="fseq" value="">
+    </form>
+    
+    <script>
+    	let delBtn = document.getElementsByClassName("deleteOne"); // 배열로 반환
+
+    	for(let i=0; i<delBtn.length; ++i){
+    		delBtn[i].addEventListener('click', delFriend);
+    	}
+    	
+    	// 정보 삭제 함수
+    	function delFriend() {
+    		let seq = this.getAttribute("data-seq");
+    		document.getElementById("fseq").value=seq;
+    		document.getElementById("sendOne").action = 'deleteOne';
+    		document.getElementById("sendOne").submit();    		
+    	}
+   </script>
+</body>
+</html>

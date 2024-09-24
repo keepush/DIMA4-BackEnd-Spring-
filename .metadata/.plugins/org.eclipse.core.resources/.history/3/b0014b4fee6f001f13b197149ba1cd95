@@ -1,0 +1,13 @@
+package com.kdigital.cookietest.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MainContoller {
+	
+	@GetMapping({"/", ""})
+	public String index() {
+		return "index";
+	}
+
+}

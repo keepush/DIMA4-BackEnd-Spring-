@@ -1,0 +1,19 @@
+package com.kdigital.score.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@RequiredArgsConstructor // 생성자 주입 방식, setter 주입 방식, Annotation 주입 방식
+@Slf4j
+public class ScoreController {
+	
+	@GetMapping("/insert")
+	public String insert() {
+		
+		return "InsertForm";
+	}
+}

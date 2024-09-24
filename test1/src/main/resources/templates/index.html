@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Test1</title>
+</head>
+<body>
+   <h3>계산기</h3>
+   <form action = "Calc" method = "POST">
+      <label for = "x">숫자1: </label>
+      <input type = "text" name = "x" id = "x" th:value = "${x}" placeholder = "숫자1 입력">
+      
+      <label for = "y">숫자2: </label>
+      <input type = "text" name = "y" id = "y" th:value = "${y}" placeholder = "숫자2 입력">
+      
+      <input type = "submit" value = "=">
+      <input type = "button" id = "clear" value = "C">
+      
+      <p id = "result">정답: [[ ${z} ]]</p>
+   </form>
+   
+   <script>
+      document.getElementById("clear").addEventListener('click', function() {
+         document.getElementById("x").value = "";
+         document.getElementById("y").value = "";
+         document.getElementById("result").innerHTML = "정답: ";
+      })
+   </script>
+</body>
+</html>

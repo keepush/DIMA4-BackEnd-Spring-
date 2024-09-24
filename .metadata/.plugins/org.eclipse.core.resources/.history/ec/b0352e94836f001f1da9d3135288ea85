@@ -1,0 +1,22 @@
+package com.kdigital.practice.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.kdigital.practice.DTO.friendDTO;
+
+@Controller
+public class FrinedController {
+	@PostMapping("/regist")
+	public String regist(
+			@ModelAttribute friendDTO friend,
+			Model model
+			) {
+		
+		model.addAttribute("friend", friend);
+		
+		return "regist";
+	}
+}

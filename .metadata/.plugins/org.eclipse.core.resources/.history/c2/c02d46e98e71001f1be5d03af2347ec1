@@ -1,0 +1,5 @@
+package com.kdigital.score.entity;
+
+public class ScoreEntity {
+
+}

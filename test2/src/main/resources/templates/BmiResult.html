@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>BMI 결과</h2>
+	<p> 전체 출력: [[ ${fitness} ]]</p>
+	<p>
+	이름: [[${fitness.username}]] <br>
+	성별: [[${fitness.sex}]] <br>
+	키: [[${fitness.height}]] <br>
+	몸무게: [[${fitness.weight}]] <br>
+	표준체중: [[${fitness.stdWeight}]] <br>
+	BMI: [[${fitness.bmi}]] <br>
+	BMI 진단결과: [[${fitness.BmiResult}]]
+	</p>
+</body>
+</html>

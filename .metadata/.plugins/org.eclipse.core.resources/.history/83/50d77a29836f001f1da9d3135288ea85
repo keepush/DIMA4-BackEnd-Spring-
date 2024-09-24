@@ -1,0 +1,5 @@
+package com.kdigital.practice.DTO;
+
+public class friendDTO {
+
+}

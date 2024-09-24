@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlans:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>객체로 데이터 송신</title>
+</head>
+<body>
+	<form action="regist" method="POST">
+		<label for="username">이름: </label>
+		<input type="text" id="username" name="username" placeholder="이름 입력"><br>
+		
+		<label for="age">나이: </label>
+		<input type="text" id="age" name="age" placeholder="나이 입력"><br>
+		
+		<label for="phone">전화번호: </label>
+		<input type="text" id="phone" name="phone" placeholder="전화번호 입력"><br>
+		
+		<label for="birthday">생년월일: </label>
+		<input type="date" id="birthday" name="birthday" placeholder="생년월일 선택"><br>
+		
+		<label>성향:
+			<input type="radio" name="active" value="0"> 내성적 &nbsp;
+			<input type="radio" name="active" value="1"> 외향적
+		</label>
+		<br><br>
+		
+		<input type="submit" value="전송">
+		<input type="reset" vaule="취소">
+	</form>
+</body>
+</html>

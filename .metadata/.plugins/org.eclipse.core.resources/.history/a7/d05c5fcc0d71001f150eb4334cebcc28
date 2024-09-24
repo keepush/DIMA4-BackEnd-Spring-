@@ -1,0 +1,7 @@
+package com.kdigital.diary.entity;
+
+@Entity
+@Table(name="diary")
+public class DiaryEntity {
+
+}

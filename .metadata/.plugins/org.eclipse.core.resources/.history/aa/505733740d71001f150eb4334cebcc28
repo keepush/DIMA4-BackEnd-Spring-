@@ -1,0 +1,5 @@
+package com.kdigital.diary.entity;
+
+public class DiaryEntity {
+
+}

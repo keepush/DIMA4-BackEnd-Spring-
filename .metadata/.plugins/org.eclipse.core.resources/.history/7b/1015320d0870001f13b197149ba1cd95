@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 결과</title>
+</head>
+<body>
+	<h2>로그인 결과</h2>
+	<p>
+		<span>로그인한 정보가 없습니다.</span>
+		<a href="logout">로그아웃</a>
+	</p>
+	
+	<p th:unless="${session.loginId eq null}">
+		<span>로그인한 아이디: [[${session.loginId}]]</span><br>
+		<span>[[${session.loginName}]] 님, 어서오세요.</span><br>
+	</p>
+</body>
+</html>
